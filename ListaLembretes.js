@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Text, View, Button } from 'react-native'
 
-export default class App extends React.Component {
+export default class App extends Component {
   // array de lembretes
   state = {
     lembretes: []

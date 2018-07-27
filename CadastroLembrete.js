@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 
-export default class CadastroLembrete extends CompositionEvent{
+export default class CadastroLembrete extends Component{
     render(){
         return (
-            <View>
+            <View style={ styles.container }>
                 <Text>Cadastrar Lembrete</Text>
             </View>
         )
