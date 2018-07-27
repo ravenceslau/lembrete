@@ -7,7 +7,7 @@ export default class App extends React.Component {
     lembretes: []
   }
 
-  // metodo responsável por acessar a api e receber os dados em json
+  // método responsável por acessar a api e receber os dados em json
   componentDidMount(){
     fetch('https://devreminder.herokuapp.com/lembrete', {method: 'GET'})
       .then(T => T.json())
@@ -33,7 +33,7 @@ export default class App extends React.Component {
           ))}
         </View>
       </View>
-    );
+    )
   }
 }
 
