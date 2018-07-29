@@ -1,13 +1,27 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Text, Alert } from 'react-native'
 import FormLembrete from './FormLembrete'
+import qs from 'querystring'
 
 export default class CadastroLembrete extends Component{
+
+    onSave(data){
+        fetch('https://devremider.herokuapp.com/lembrete', {
+            method: 'POST',
+            body: qs.stringify(data),
+            headers: {
+                'Contetn-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+            .then(T => T.json())
+            .then(() => Alert.alert('Cadastrado', 'Lembrete cadastrado'))
+    }
+
     render(){
         return (
             <View style={ styles.container }>
                 <Text>Cadastrar Lembrete</Text>
-                <FormLembrete />
+                <FormLembrete onSave={this.onSave.bind(this)} onCancel={console.log} />
             </View>
         )
     }

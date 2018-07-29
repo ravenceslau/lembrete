@@ -43,8 +43,8 @@ export default class FormLembrete extends Component {
                 </View>
 
                 <View>
-                    <Button title='Salvar' onPress={()=> console.log('Salvo')} />
-                    <Button title='Cancelar' onPress={()=> console.log('Cancelado')} />
+                    <Button title='Salvar' disabled={this.state.conteudo === ''} onPress={()=> this.props.onSave(this.state)} />
+                    <Button title='Cancelar' onPress={this.props.onCancel} />
                 </View>
 
             </View>
@@ -55,7 +55,7 @@ export default class FormLembrete extends Component {
 const styles = StyleSheet.create ({
     container:{
         flex: 1,
-        backgroundColor: '#FFF',
+        backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center'
     }
