@@ -10,11 +10,11 @@ export default class FormLembrete extends Component {
 
     render (){
         return (
-            <View >
+            <View style={styles.container}>
 
                 <View>
                     <View>
-                        <Text>Conteudo:</Text>
+                        <Text>Conteúdo:</Text>
                         <TextInput 
                             placeholder='Digite o conteudo da mensagem'
                             value={this.state.conteudo}
@@ -26,15 +26,15 @@ export default class FormLembrete extends Component {
                         <Picker 
                             selectedValue={this.state.prioridade}
                             onValueChange={ prioridade => this.setState({ prioridade })}>
-                            <Picker.Item lable='BAIXA' value='BAIXA' />
+                            <Picker.Item label='BAIXA' value='BAIXA' />
                             <Picker.Item label='MEDIA' value='Media' />
-                            <Picker.Item lable='ALTA' value='ALTA' />
+                            <Picker.Item label='ALTA' value='ALTA' />
                         </Picker>
                     </View>
                     <View>
                         <Text>Arquivar</Text>
                         <Picker
-                            selectedValue={this.state.state( arquivado )}
+                            selectedValue={this.state.arquivado}
                             onValueChange={ arquivado => this.setState({ arquivado }) } >
                             <Picker.Item label='SIM' value />
                             <Picker.Item label='NÃO' value={false} />
@@ -43,8 +43,8 @@ export default class FormLembrete extends Component {
                 </View>
 
                 <View>
-                    <Button title='Salvar' onPress={console.log('Salvo')} />
-                    <Button title='Cancelar' onPress={console.log('Cancelado')} />
+                    <Button title='Salvar' onPress={()=> console.log('Salvo')} />
+                    <Button title='Cancelar' onPress={()=> console.log('Cancelado')} />
                 </View>
 
             </View>
@@ -52,4 +52,11 @@ export default class FormLembrete extends Component {
     }    
 }
 
-const styles = StyleSheet.create
+const styles = StyleSheet.create ({
+    container:{
+        flex: 1,
+        backgroundColor: '#FFF',
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
+})
