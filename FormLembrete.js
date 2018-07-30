@@ -2,10 +2,16 @@ import React, { Component } from 'react'
 import { StyleSheet, Button, View, Text, TextInput, Picker } from 'react-native'
 
 export default class FormLembrete extends Component {
-    state = {
+    state = this.props.value || {
         conteudo: '',
         prioridade: 'MEDIA',
         arquivado: false
+    }
+
+    componentWillReceiveProps (nextProps) {
+        if (nextProps.value) {
+            this.setState(nextProps.value)
+        }
     }
 
     render (){

@@ -6,11 +6,11 @@ import qs from 'querystring'
 export default class CadastroLembrete extends Component{
 
     onSave(data){
-        fetch('https://devremider.herokuapp.com/lembrete', {
+        fetch('https://devreminder.herokuapp.com/lembrete', {
             method: 'POST',
             body: qs.stringify(data),
             headers: {
-                'Contetn-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         })
             .then(T => T.json())
