@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, Button, Alert } from 'react-native'
+import { Text, View, Button, Alert, StyleSheet } from 'react-native'
 
 export default class App extends Component {
   // array de lembretes
@@ -38,16 +38,18 @@ export default class App extends Component {
     const { lembretes } = this.state
 
     return (
-      <View>
-        <Text>Seus Lembretes</Text>
-        <Button title='Adicionar' onPress={()=> this.props.history.push('/cadastro')} />
+      <View style={ styles.container }>
+        <View style={ styles.subcontainer }>
+          <Text style={{ fontSize: 16, fontWeight: 'bold' }}>Seus Lembretes</Text>
+          <Button style={{ height: 50 }} title='Adicionar' onPress={()=> this.props.history.push('/cadastro')} />
+        </View>
 
-        <View>
+        <View style={{ flex: 0.9 }}>
           { lembretes.map((lembrete, key) => (
-            <View key={key}>
-              <Text>{lembrete.conteudo}</Text>
-              <Button title='Editar' onPress={()=> this.props.history.push('/' + lembrete.id)} />
-              <Button title='Excluir' onPress={()=> this.onDelete(lembrete.id)} />
+            <View key={key} style={styles.containerLembretes} >
+              <Text style={{ flex: 0.8 }}>{lembrete.conteudo}</Text>
+              <Button style={{ flex: 0.1 }} title='Editar' onPress={()=> this.props.history.push('/' + lembrete.id)} />
+              <Button style={{ flex: 0.1 }} title='Excluir' onPress={()=> this.onDelete(lembrete.id)} />
             </View>
           ))}
         </View>
@@ -56,3 +58,23 @@ export default class App extends Component {
   }
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: 50,
+    paddingLeft: 20,
+    paddingRight: 20
+  },
+  subcontainer: {
+    marginBottom: 30,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  containerLembretes: {
+    flex: 0.1,
+    height: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  }
+})
