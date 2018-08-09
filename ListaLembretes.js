@@ -26,7 +26,7 @@ export default class App extends Component {
           onPress: () => {
             fetch(`https://devreminder.herokuapp.com/lembrete/${id}`, { method: 'DELETE' })
               .then(T => T.json())
-              .then(() => this.setState({ lembretes: this.state.lembretes.this.filter(T => T.id != id)}))
+              .then(() => this.setState({ lembretes: this.state.lembretes.filter(T => T.id !== id)}))
           }
         }
       ]
@@ -40,13 +40,13 @@ export default class App extends Component {
     return (
       <View>
         <Text>Seus Lembretes</Text>
-        <Button title='Adicionar' onPress={()=> console.log('criou o lembrete')} />
+        <Button title='Adicionar' onPress={()=> this.props.history.push('/cadastro')} />
 
         <View>
           { lembretes.map((lembrete, key) => (
             <View key={key}>
               <Text>{lembrete.conteudo}</Text>
-              <Button title='Editar' onPress={()=> console.log('editar lemrete')} />
+              <Button title='Editar' onPress={()=> this.props.history.push('/' + lembrete.id)} />
               <Button title='Excluir' onPress={()=> this.onDelete(lembrete.id)} />
             </View>
           ))}

@@ -14,14 +14,16 @@ export default class CadastroLembrete extends Component{
             }
         })
             .then(T => T.json())
-            .then(() => Alert.alert('Cadastrado', 'Lembrete cadastrado'))
+            .then(() => Alert.alert(
+                'Cadastrado', 
+                'Lembrete cadastrado', [{ text: 'OK', onPress: () => this.props.history.push('/') }]))
     }
 
     render(){
         return (
             <View style={ styles.container }>
                 <Text>Cadastrar Lembrete</Text>
-                <FormLembrete onSave={this.onSave.bind(this)} onCancel={console.log} />
+                <FormLembrete onSave={this.onSave.bind(this)} onCancel={() => this.props.history.push('/')} />
             </View>
         )
     }

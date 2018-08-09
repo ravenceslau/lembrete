@@ -10,7 +10,8 @@ export default class EditarLembrete extends Component{
     }
 
     onSave (data){
-        fetch('https://devreminder.herokuapp.com/lembrete/2', {
+        const pageId = this.props.match.params.pageId
+        fetch('https://devreminder.herokuapp.com/lembrete/' + pageId, {
             method: 'PUT',
             body: qs.stringify(data),
             headers: {
@@ -18,12 +19,15 @@ export default class EditarLembrete extends Component{
             }
         })
             .then(T => T.json())
-            .then(() => Alert.alert('Editar', 'Lembrete editado'))
+            .then(() => Alert.alert(
+                'Editar', 
+                'Lembrete editado', [{ text: 'OK', onPress: () => this.props.history.push('/') }]))
     }
 
     // método responsável por acessar a api e receber os dados em json
     componentDidMount(){
-        fetch('https://devreminder.herokuapp.com/lembrete/2', { method: 'GET' })
+        const pageId = this.props.match.params.pageId
+        fetch('https://devreminder.herokuapp.com/lembrete/' + pageId, { method: 'GET' })
         .then(T => T.json())
         .then(lembrete => this.setState({ lembrete }))
     }
@@ -41,7 +45,7 @@ export default class EditarLembrete extends Component{
                 )}
 
                 {lembrete && ( 
-                    <FormLembrete value={lembrete} onSave={this.onSave.bind(this)} onCancel={console.log} />
+                    <FormLembrete value={lembrete} onSave={this.onSave.bind(this)} onCancel={() => this.props.history.push('/')} />
                 )}
 
             </View>
