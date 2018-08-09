@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, Alert } from 'react-native'
-import FormLembrete from './FormLembrete'
+import FormLembrete from '../componentes/FormLembrete'
 import qs from 'querystring'
 
 export default class EditarLembrete extends Component{

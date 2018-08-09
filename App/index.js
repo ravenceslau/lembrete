@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import ListaLembretes from './ListaLembretes'
-import CadastroLembrete from './CadastroLembrete'
-import EditarLembrete from './EditarLembrete'
+import ListaLembretes from './views/ListaLembretes'
+import CadastroLembrete from './views/CadastroLembrete'
+import EditarLembrete from './views/EditarLembrete'
 import { View } from 'react-native'
 import { NativeRouter, Switch, Route } from 'react-router-native'
 
