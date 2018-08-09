@@ -6,7 +6,7 @@ import EditarLembrete from './EditarLembrete'
 export default class App extends React.Component {
   render() {
     return (
-      <EditarLembrete />
+      <ListaLembretes />
     )
   }
 } 
